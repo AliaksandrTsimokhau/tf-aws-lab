@@ -1,5 +1,5 @@
 ### Problem to Be Solved 
-You will create infrastructure to run instances as part of Auto-Scaling group, each instance will write its data to a specified S3 bucket. This task is binding to real production needs – for instance developers could request you to configure instances with ability to writing debug information to a S3 bucket.
+ This lab shows you how to use Terraform to create infrastructure in AWS including auto-scaling group, VPC, subnets, security groups and IAM role. Each instance will report its data to a specified S3 bucket on startup. This task is binding to real production needs – for instance developers could request instances with ability to writing debug information to S3 bucket.
 
  
 ### Explanation of the Solution 
@@ -10,25 +10,21 @@ After you’ve created configuration we will work on its optimization like using
 
 
 ## PRE-REQUISITES
-Learn about [terraform state](https://www.terraform.io/docs/language/state/index.html).
+1. Learn about [terraform state](https://www.terraform.io/docs/language/state/index.html).
 
-Create a folder with 2 subfolders: ‘base’ and ‘compute’.
-E.g. mkdir -p `~/tf_aws_lab/{base,compute}`
+2. Create a folder with 2 subfolders: ‘base’ and ‘compute’. E.g. mkdir -p `~/tf_aws_lab/{base,compute}`
 
-All actions should be done under those subfolder as Terraform gets it context from current working directory.
-Change current directory  to `~/tf_aws_lab/base` folder and create root.tf file. Create base terraform empty block inside this file. Create provider block inside root.tf file with the following attributes: 
-  region                  = "us-east-1"
-  alias                   = "use1"
-  shared_credentials_file = "~/.aws/credentials"
+3. All actions should be done under those subfolder as Terraform gets it context from current working directory. Change current directory  to `~/tf_aws_lab/base` folder and create root.tf file. 
+Add `terraform {}`empty block to this file. Create AWS provider block inside `root.tf` file with the following attributes: region= "us-east-1", alias = "use1", shared_credentials_file = "~/.aws/credentials".
 
-Note: Please add your AWS credentials to   "~/.aws/credentials" folder. See https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html document for details
+Hint: Add your AWS credentials to   "~/.aws/credentials" folder. See [this](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html) document for details
 
 Run `terraform init` to initialize your configuration. 
 Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
 Run `terraform plan` to ensure that there are no changes
-Please use underscore as the main naming convention for Terraform resources, e.g. "my_resource" instead of "my-resource".
+Please use underscore Terraform resources naming, e.g. "my_resource" instead of "my-resource".
 
-Change current directory  to `~/tf_aws_lab/compute` and repeat the steps above.
+4. Change current directory  to `~/tf_aws_lab/compute` and repeat the steps in [3].
 
 You are ready for lab!
 
@@ -59,9 +55,9 @@ Ensure that current directory is `~/tf_aws_lab/base`
 Create custom ssh key-pair to access your ec2 instances:
 
 -	Create your ssh key pair [refer to this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html#how-to-generate-your-own-key-and-import-it-to-aws)
--	Create `variables.tf` file with empty varaible "ssh_key" but with the following description "Provides custom public ssh key". Never store you secrets inside the code!
+-	Create `variables.tf` file with empty variable "ssh_key" but with the following description "Provides custom public ssh key". Never store you secrets inside the code!
 -	Create `key_pai.tf` file with `aws_key_pair` resource. Use ssh_key variable as a public key source.
-- Run `terraform plan` and provide reqiured public key. Observe the output and run `terraform plan` again.
+- Run `terraform plan` and provide required public key. Observe the output and run `terraform plan` again.
 - To prevent providing ssh key on each configuration run but stay secure - set binding environment variable-`export TF_VAR_ssh_key="YOUR_PUBLIC_SSH_KEY_STRING"`
 - Run `terraform plan` and observe the output.
 
@@ -75,7 +71,7 @@ Apply your changes when you're ready.
 
 Ensure that current directory is  `~/tf_aws_lab/base`
 
-Create S3 bucket as the sstorage for your infrustructure:
+Create S3 bucket as the storage for your infrastructure:
 
 -	Create `s3.tf`. Name your bucket "epam-aws-tf-lab". 
 -	Set bucket acl as private. Never share your bucket to a world!
@@ -162,7 +158,7 @@ Create auto-scaling group resources:
 
 -	Create Launch Template resource. (name=epam-aws-tf-lab,image_id="actual Amazon Linux AMI2 image id", instance_type=t3.micro,security_group_id,key_name,iam_instance_profile, user_data script)
 - Provide template with `delete_on_termination = true` network interface parameter - to automate clean-up of the resources
-- Author User Data bash script wich should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
+- Author User Data bash script which should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
 Parameters:
 EC2_MACHINE_UUID=$(cat /sys/devices/virtual/dmi/id/product_uuid |tr '[:upper:]' '[:lower:]')
 PUBLIC_NAME=$(curl --connect-timeout 5 -s http://169.254.169.254/latest/meta-data/public-hostname 2>/dev/null)

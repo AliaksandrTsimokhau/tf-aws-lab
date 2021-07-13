@@ -2,12 +2,12 @@
 On the following task we will start refinement of our script to use data driven approach and to re-use code with Terraform modules.
 
 ### TASK 9
-Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [quering terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
+Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [querying terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
 
 Change current directory to `~/tf_aws_lab/base`
 Refine your configuration :
 
-- Use data source to request Avalability zones for us-east-1 region and assign your vpc with apropritae AZs. Hint: select such AZ numbers which will not initiate resource recreation and has already assigned to your VPC.
+- Use data source to request Avalability zones for us-east-1 region and assign your vpc with appropriate AZs. Hint: select such AZ numbers which will not initiate resource recreation and has already assigned to your VPC.
 Store all resources from this task in `data.tf` file.
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
@@ -44,7 +44,7 @@ Refine your configurations:
 - [Optional] Refine `compute` configuration by a creating Autoscaling group module.
 
 
-Store modulules in `~/tf_aws_lab/modules/` subfolders.
+Store modules in `~/tf_aws_lab/modules/` subfolders.
 
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if it needed.
