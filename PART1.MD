@@ -73,7 +73,7 @@ Ensure that current directory is  `~/tf_aws_lab/base`
 
 Create S3 bucket as the storage for your infrastructure:
 
--	Create `s3.tf`. Name your bucket "epam-aws-tf-lab". 
+-	Create `s3.tf`. Name your bucket "epam-aws-tf-lab-${random_string.my_numbers.result}" to provide it with partition unique name. See [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) documentation for details
 -	Set bucket acl as private. Never share your bucket to a world!
 
 
@@ -169,6 +169,8 @@ This message was generated on instance {PUBLIC_NAME} with the following UUID {EC
 
 
 Store all resources from this task in `asg.tf` file.
+If applicable all resources should be tagged with following tags {Terraform=true, Project=epam-tf-aws-lab}. Please keep in mind that autoscaling group requires special format for `Tags` section!
+If applicable all resources should be defined with the provider alias.
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
 Run `terraform plan` to see your changes.
