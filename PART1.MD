@@ -177,4 +177,4 @@ Run `terraform plan` to see your changes.
 
 Apply your changes when you're ready.
 
-As the result ec2 instance should be launched by a autoscaling-group and new file should be created on S3 bucket. 
+As the result ec2 instance should be launched by autoscaling-group and new file should be created on S3 bucket. 

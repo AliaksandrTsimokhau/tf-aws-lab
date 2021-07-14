@@ -7,9 +7,9 @@ Learn about [terraform backend in AWS S3](https://www.terraform.io/docs/language
 
 Refine your configurations:
 
-- Refine `base` configuration by a moving local state to a s3.
+- Refine `base` configuration by moving local state to a s3.
 - Refine `base` configuration by adding locking with DynamoDB.
-- Refine `compute` configuration by a moving local state to a s3.
+- Refine `compute` configuration by moving local state to a s3.
 - Refine `compute` configuration by adding locking with DynamoDB.
 
 Do not forget to change path to a remote state for `compute` configuration.
@@ -89,10 +89,10 @@ Learn about [terraform modules](https://www.terraform.io/docs/language/modules/d
 
 Refine your configurations:
 
-- Refine `base` configuration by a creating module for VPC related resources: vpc, subnets, routes, internet gateways.
-- Refine `base` configuration by a creating module for security group related resources.
-- Refine `base` configuration by a creating module for IAM role related resources.
-- [Optional] Refine `compute` configuration by a creating Autoscaling group module.
+- Refine `base` configuration by creating module for VPC related resources: vpc, subnets, routes, internet gateways.
+- Refine `base` configuration by creating module for security group related resources.
+- Refine `base` configuration by creating module for IAM role related resources.
+- [Optional] Refine `compute` configuration by creating Autoscaling group module.
 
 
 Store modules in `~/tf_aws_lab/modules/` subfolders.
