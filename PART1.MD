@@ -90,7 +90,7 @@ Ensure that current directory is  `~/tf_aws_lab/base`
 Create IAM resources:
 
 -	IAM group (name=test-move).
--	IAM policy with write permission for "epam-aws-tf-lab" bucket only (name=s3-write-epam-aws-tf-lab). Hint: store your policy as yaml document side by side with configurations(or create 'files' subfolder for storing policy) and use templatefile() function to transfer IAM policy with imported S3 bucket name to a resource.
+-	IAM policy with write permission for "epam-aws-tf-lab" bucket only (name=s3-write-epam-aws-tf-lab-${random_string.my_numbers.result}). Hint: store your policy as yaml document side by side with configurations(or create 'files' subfolder for storing policy) and use templatefile() function to transfer IAM policy with imported S3 bucket name to a resource.
 -	Create IAM role, attach the policy to it and create IAM instance profile for this IAM role.
 
 
