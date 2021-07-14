@@ -23,7 +23,7 @@ Run `terraform plan` to see your changes and re-apply your changes if it needed.
 Learn about [terraform state mv](https://www.terraform.io/docs/cli/commands/state/mv.html) command
 
 You are going to move previously created resource(IAM group) between states.
-Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. This meaning "move" resource is move it between states. Moreover to make it works you should delete resource from source conbfiguration and add it to destination configuration(this action is not automated).
+Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. This meaning "move" resource is move it between states. Moreover to make it works you should delete resource from source configuration and add it to destination configuration(this action is not automated).
 
 - Move `test-move` IAM group from the `base` state to the `compute` using `terraform state mv` command.
 - Update both configuration according to this move.
@@ -42,7 +42,7 @@ Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state fil
 - Add new resource aws_iam_group "test-import" to the `compute` configuration.
 - Run `terraform plan` to see your changes but do not apply changes.
 - Import `test-import` IAM group to the `compute` state.
-- Run `terraform plan` again to enshure that import was succesfull.
+- Run `terraform plan` again to ensure that import was successful.
 
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 If applicable all resources should be tagged with following tags {Terraform=true, Project=epam-tf-aws-lab}.
@@ -55,7 +55,7 @@ Learn about [terraform data sources](https://www.terraform.io/docs/language/data
 Change current directory to `~/tf_aws_lab/base`
 Refine your configuration :
 
-- Use data source to request Avalability zones for us-east-1 region and assign your vpc with appropriate AZs. Hint: select such AZ numbers which will not initiate resource recreation and has already assigned to your VPC.
+- Use data source to request Availability zones for us-east-1 region and assign your vpc with appropriate AZs. Hint: select such AZ numbers which will not initiate resource recreation and has already assigned to your VPC.
 
 Store all resources from this task in `data.tf` file.
 

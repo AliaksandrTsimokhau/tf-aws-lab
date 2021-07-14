@@ -6,7 +6,7 @@
 You will use Terraform with AWS provider to create 2 separate Terraform configurations:
  1) Base configuration
  2) Compute configuration
-After you’ve created configuration we will work on its optimization like using data driven approach and creating modules.
+After you’ve created configuration, we will work on its optimization like using data driven approach and creating modules.
 
 
 ## PRE-REQUISITES
