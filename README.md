@@ -210,7 +210,7 @@ Apply your changes when you're ready. You can update outputs without apply in a 
     - `terraform apply` log (`tf_apply.log`)
     - `terraform output ...` log (`tf_output.log`)
 
-## TASK 7 - TF Remote State data source
+## TASK 7 - Configure remote data source
 
 Learn about [terraform remote state data source](https://www.terraform.io/docs/language/state/remote-state-data.html).
 
@@ -321,9 +321,9 @@ Run `terraform validate`  and `terraform fmt` to check if your modules valid and
 
 ### Definition of DONE:
 
-- Terraform created infrastructure with no errors
+- Terraform moved resources with no errors
 - AWS Resources NOT changed (check AWS Console)
-- Save following artifacts under `/reports/task8/` folder:
+- Save following artifacts under `/reports/task10/` folder:
     - `terraform.tfstate` file for both configurations
 
 ## TASK 11 - Import resources
@@ -344,12 +344,12 @@ If applicable all resources should be tagged with following tags {Terraform=true
 If applicable all resources should be defined with the provider alias.
 
 
-- Terraform created infrastructure with no errors
+- Terraform imported resources with no errors
 - AWS Resources NOT changed (check AWS Console)
-- Save following artifacts under `/reports/task8/` folder:
+- Save following artifacts under `/reports/task11/` folder:
     - `terraform.tfstate` file for `compute` configuration
 
-## TASK 12 - Data discovery
+## TASK 12 - Use data discovery
 Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [querying terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
 
 In this task we are going to use data driven approach instead to use remote state data source.
@@ -410,7 +410,7 @@ Apply your changes when you're ready.
 - Terraform created infrastructure with no errors
 - AWS Resources Created as expected (check AWS Console)
 - Nginx server respond on Loadbalancer's IP Address with expected response 
-- Save following artifacts under `/reports/task5/` folder:
+- Save following artifacts under `/reports/task13/` folder:
     - `terraform.tfstate` file
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
