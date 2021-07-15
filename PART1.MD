@@ -159,11 +159,18 @@ Create auto-scaling group resources:
 -	Create Launch Template resource. (name=epam-aws-tf-lab,image_id="actual Amazon Linux AMI2 image id", instance_type=t3.micro,security_group_id,key_name,iam_instance_profile, user_data script)
 - Provide template with `delete_on_termination = true` network interface parameter - to automate clean-up of the resources
 - Author User Data bash script which should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
+
 Parameters:
+```
 EC2_MACHINE_UUID=$(cat /sys/devices/virtual/dmi/id/product_uuid |tr '[:upper:]' '[:lower:]')
-PUBLIC_NAME=$(curl --connect-timeout 5 -s http://169.254.169.254/latest/meta-data/public-hostname 2>/dev/null)
-File template:
-This message was generated on instance {PUBLIC_NAME} with the following UUID {EC2_MACHINE_UUID}
+INSTANCE_ID=$(curl --connect-timeout 5 -s http://169.254.169.254/latest/meta-data/instance-id 2>/dev/null)
+```
+
+command to send text to S3 bucket:
+```
+This message was generated on instance {INSTANCE_ID} with the following UUID {EC2_MACHINE_UUID}
+echo "This message was generated on instance ${INSTANCE_ID} with the following UUID ${EC2_MACHINE_UUID}" | aws s3 cp - s3://rtcp-perftest/${INSTANCE_ID}.txt
+```
 
 - Create aws_autoscaling_group resource. (name=epam-aws-tf-lab,max_size=min_size=1,launch_template=epam-aws-tf-lab)
 
