@@ -238,7 +238,7 @@ Apply your changes when you're ready.
     - `terraform init` log (`tf_init.log`)
     - `terraform apply` log (`tf_apply.log`)
 
-## TASK 8 - Create EC2/ASG
+## TASK 8 - Create EC2/ASG/ELB
 
 Ensure that current directory is  `~/tf_aws_lab/compute`
 
@@ -295,7 +295,7 @@ As the result ec2 instance should be launched by autoscaling-group and new file 
 # Optimizing Infrastructure
 On the following task we will start refinement of our script to use data driven approach and to re-use code with Terraform modules.
 
-### TASK 9
+### TASK 9 - Move state to S3/Locking
 
 Learn about [terraform backend in AWS S3](https://www.terraform.io/docs/language/settings/backends/s3.html)
 
@@ -312,7 +312,7 @@ Store modules in `~/tf_aws_lab/modules/` subfolders.
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if it needed.
 
-### TASK 10
+### TASK 10 - Move resources
 
 Learn about [terraform state mv](https://www.terraform.io/docs/cli/commands/state/mv.html) command
 
@@ -325,7 +325,7 @@ Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state fil
 
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 
-### TASK 11
+### TASK 11 - Import resources
 
 Learn about [terraform import](https://www.terraform.io/docs/cli/import/index.html) command
 
@@ -342,10 +342,10 @@ Run `terraform validate`  and `terraform fmt` to check if your modules valid and
 If applicable all resources should be tagged with following tags {Terraform=true, Project=epam-tf-aws-lab}.
 If applicable all resources should be defined with the provider alias.
 
-### TASK 12
+### TASK 12 - Data-driven approach
 Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [querying terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
 
-#### base configuration 
+#### base configuration
 Change current directory to `~/tf_aws_lab/base`
 Refine your configuration :
 
@@ -359,7 +359,7 @@ If applicable all resources should be defined with the provider alias.
 
 Apply your changes when you're ready.
 
-#### compute configuration 
+#### compute configuration
 Change current directory to   `~/tf_aws_lab/compute`
 
 Refine your configuration :
@@ -377,7 +377,7 @@ If applicable all resources should be defined with the provider alias.
 
 Apply your changes when you're ready.
 
-### TASK 13
+### TASK 13 - Modules
 
 Learn about [terraform modules](https://www.terraform.io/docs/language/modules/develop/index.html)
 
