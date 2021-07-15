@@ -285,11 +285,11 @@ As the result ec2 instance should be launched by autoscaling-group and new file 
     - `terraform.tfstate` file
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
-    
-# Optimizing Infrastructure
-On the following task we will start refinement of our script to use data driven approach and to re-use code with Terraform modules.
 
-### TASK 9 - Move state to S3/Locking
+    
+# Working with state
+
+## TASK 9 - Move state to S3/Locking
 
 Learn about [terraform backend in AWS S3](https://www.terraform.io/docs/language/settings/backends/s3.html)
 
@@ -306,7 +306,7 @@ Store modules in `~/tf_aws_lab/modules/` subfolders.
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if it needed.
 
-### TASK 10 - Move resources
+## TASK 10 - Move resources
 
 Learn about [terraform state mv](https://www.terraform.io/docs/cli/commands/state/mv.html) command
 
@@ -326,7 +326,7 @@ Run `terraform validate`  and `terraform fmt` to check if your modules valid and
 - Save following artifacts under `/reports/task8/` folder:
     - `terraform.tfstate` file for both configurations
 
-### TASK 11 - Import resources
+## TASK 11 - Import resources
 
 Learn about [terraform import](https://www.terraform.io/docs/cli/import/index.html) command
 
@@ -349,7 +349,7 @@ If applicable all resources should be defined with the provider alias.
 - Save following artifacts under `/reports/task8/` folder:
     - `terraform.tfstate` file for `compute` configuration
 
-### TASK 12 - Data discovery
+## TASK 12 - Data discovery
 Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [querying terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
 
 In this task we are going to use data driven approach instead to use remote state data source.
@@ -386,6 +386,9 @@ If applicable all resources should be defined with the provider alias.
 
 Apply your changes when you're ready.
 
+
+# Advanced tasks
+
 ## TASK 13 - Expose node output with nginx
 
 Ensure that current directory is  `~/tf_aws_lab/compute`
@@ -412,7 +415,7 @@ Apply your changes when you're ready.
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
-### TASK 14 - Modules
+## TASK 14 - Modules
 
 Learn about [terraform modules](https://www.terraform.io/docs/language/modules/develop/index.html)
 
