@@ -263,7 +263,7 @@ echo "This message was generated on instance ${INSTANCE_ID} with the following U
 ```
 
 - Create `aws_autoscaling_group` resource. (`name=epam-aws-tf-lab`,`max_size=min_size=1`,`launch_template=epam-aws-tf-lab`)
-
+- Create Classic Loadbalancer and attach it to an auto-scaling group with `aws_autoscaling_attachment`. Configure `aws_autoscaling_group`  to ignore changes to the `load_balancers` and `target_group_arns` arguments within a lifecycle configuration block. (lb_port=80, instance_port=80, protocol=http).
 
 Store all resources from this task in `asg.tf` file.
 
