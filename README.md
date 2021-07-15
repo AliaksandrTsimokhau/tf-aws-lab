@@ -65,9 +65,9 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task1/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
 ## TASK 2 - Import Your SSH Key into AWS
 
@@ -99,9 +99,9 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task2/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
 ## TASK 3 - Create S3 Bucket
 
@@ -128,9 +128,9 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task3/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
 
 ## TASK 4 - Create IAM Resources
@@ -160,9 +160,9 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task4/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
 ## TASK 5 - Create Security Group
 Ensure that current directory is  `~/tf_aws_lab/base`
@@ -190,9 +190,9 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task5/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
 ## TASK 6 - Form TF Output 
 Ensure that current directory is  `~/tf_aws_lab/base`
@@ -288,9 +288,9 @@ As the result ec2 instance should be launched by autoscaling-group and new file 
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task8/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_paln_before.log`)
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
-    - `terraform plan` (after changes) log (`tf_paln_after.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
     
 # Optimizing Infrastructure
 On the following task we will start refinement of our script to use data driven approach and to re-use code with Terraform modules.
