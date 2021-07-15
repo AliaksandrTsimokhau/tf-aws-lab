@@ -377,7 +377,33 @@ If applicable all resources should be defined with the provider alias.
 
 Apply your changes when you're ready.
 
-### TASK 13 - Modules
+## TASK 13 - Expose node output with nginx
+
+Ensure that current directory is  `~/tf_aws_lab/compute`
+
+Change User Data script at Launch Template as follows:
+
+-   Nginx binary should be installed on instance (`port=80`).
+-   Variables INSTANCE_ID and EC2_MACHINE_UUID should be defined( see Task 8).
+-   Nginx default page should be configured to return the same text as we put previously to  S3 bucket in Task 8: "This message was generated on instance ${INSTANCE_ID} with the following UUID ${EC2_MACHINE_UUID}".
+-   Nginx server should be started
+
+Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
+Run `terraform plan` to see your changes.
+
+Apply your changes when you're ready.
+
+### Definition of DONE:
+
+- Terraform created infrastructure with no errors
+- AWS Resources Created as expected (check AWS Console)
+- Save following artifacts under `/reports/task5/` folder:
+    - `terraform.tfstate` file
+    - `terraform plan` (before changes) log (`tf_plan_before.log`)
+    - `terraform apply` log (`tf_apply.log`)
+    - `terraform plan` (after changes) log (`tf_plan_after.log`)
+
+### TASK 14 - Modules
 
 Learn about [terraform modules](https://www.terraform.io/docs/language/modules/develop/index.html)
 
