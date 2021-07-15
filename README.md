@@ -65,7 +65,6 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task1/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
@@ -99,7 +98,6 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task2/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
@@ -128,7 +126,6 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task3/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
@@ -160,7 +157,6 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task4/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
@@ -190,7 +186,6 @@ Apply your changes when you're ready.
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task5/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
@@ -215,7 +210,7 @@ Apply your changes when you're ready. You can update outputs without apply in a 
     - `terraform apply` log (`tf_apply.log`)
     - `terraform output ...` log (`tf_output.log`)
 
-## TASK 7 - TF Remote Store
+## TASK 7 - TF Remote State data source
 
 Learn about [terraform remote state data source](https://www.terraform.io/docs/language/state/remote-state-data.html).
 
@@ -288,7 +283,6 @@ As the result ec2 instance should be launched by autoscaling-group and new file 
 - AWS Resources Created as expected (check AWS Console)
 - Save following artifacts under `/reports/task8/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
     
@@ -316,7 +310,7 @@ Run `terraform plan` to see your changes and re-apply your changes if it needed.
 
 Learn about [terraform state mv](https://www.terraform.io/docs/cli/commands/state/mv.html) command
 
-You are going to move previously created resource(IAM group) between states.
+You are going to move previously created resource(IAM group) from `base` to ` compute` state.
 Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. This meaning "move" resource is move it between states. Moreover to make it works you should delete resource from source configuration and add it to destination configuration(this action is not automated).
 
 - Move `test-move` IAM group from the `base` state to the `compute` using `terraform state mv` command.
@@ -325,6 +319,13 @@ Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state fil
 
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 
+### Definition of DONE:
+
+- Terraform created infrastructure with no errors
+- AWS Resources NOT changed (check AWS Console)
+- Save following artifacts under `/reports/task8/` folder:
+    - `terraform.tfstate` file for both configurations
+
 ### TASK 11 - Import resources
 
 Learn about [terraform import](https://www.terraform.io/docs/cli/import/index.html) command
@@ -332,7 +333,7 @@ Learn about [terraform import](https://www.terraform.io/docs/cli/import/index.ht
 You are going to import new resource(IAM group) to your state.
 Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. This meaning to "import" resource you should import resource attributes to Terraform state. Then you have to add resource to destination configuration(this action is not automated).
 
-- Create IAM group(name="test-import").
+- Create IAM group in AWS Console(name="test-import").
 - Add new resource aws_iam_group "test-import" to the `compute` configuration.
 - Run `terraform plan` to see your changes but do not apply changes.
 - Import `test-import` IAM group to the `compute` state.
@@ -342,8 +343,16 @@ Run `terraform validate`  and `terraform fmt` to check if your modules valid and
 If applicable all resources should be tagged with following tags {Terraform=true, Project=epam-tf-aws-lab}.
 If applicable all resources should be defined with the provider alias.
 
-### TASK 12 - Data-driven approach
+
+- Terraform created infrastructure with no errors
+- AWS Resources NOT changed (check AWS Console)
+- Save following artifacts under `/reports/task8/` folder:
+    - `terraform.tfstate` file for `compute` configuration
+
+### TASK 12 - Data discovery
 Learn about [terraform data sources](https://www.terraform.io/docs/language/data-sources/index.html) and [querying terraform data sources](https://learn.hashicorp.com/tutorials/terraform/data-sources?in=terraform/configuration-language&utm_source=WEBSITE&utm_medium=WEB_BLOG&utm_offer=ARTICLE_PAGE).
+
+In this task we are going to use data driven approach instead to use remote state data source.
 
 #### base configuration
 Change current directory to `~/tf_aws_lab/base`
@@ -397,9 +406,9 @@ Apply your changes when you're ready.
 
 - Terraform created infrastructure with no errors
 - AWS Resources Created as expected (check AWS Console)
+- Nginx server respond on Loadbalancer's IP Address with expected response 
 - Save following artifacts under `/reports/task5/` folder:
     - `terraform.tfstate` file
-    - `terraform plan` (before changes) log (`tf_plan_before.log`)
     - `terraform apply` log (`tf_apply.log`)
     - `terraform plan` (after changes) log (`tf_plan_after.log`)
 
