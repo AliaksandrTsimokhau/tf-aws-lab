@@ -163,10 +163,10 @@ Apply your changes when you're ready.
 ## TASK 5 - Create Security Group
 Ensure that current directory is  `~/tf_aws_lab/base`
 
-Create security group resource to access instances via ssh:
+Create following resources:
 
--	Security group group (`name=ssh-inbound`, `port=22`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`).
-
+-	Security group (`name=ssh-inbound`, `port=22`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`, `description="allows ssh access from safe IP-range"`).
+-	Security group (`name=http-inbound`, `port=80`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`, `description="allows http access from safe IP-range"`).
 
 Store all resources from this task in `sg.tf` file.
 
@@ -239,7 +239,7 @@ Ensure that current directory is  `~/tf_aws_lab/compute`
 
 Create auto-scaling group resources:
 
-- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id`,`key_name`,`iam_instance_profile`, `user_data script`, `min=1`, `max=3`)
+- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id={ssh-inbound-id}`,`key_name`,`iam_instance_profile`, `user_data script`, `min=1`, `max=3`)
 - Provide template with `delete_on_termination = true` network interface parameter - to automate clean-up of the resources
 - Author User Data bash script which should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
 
@@ -258,7 +258,7 @@ echo "This message was generated on instance ${INSTANCE_ID} with the following U
 ```
 
 - Create `aws_autoscaling_group` resource. (`name=epam-aws-tf-lab`,`max_size=min_size=1`,`launch_template=epam-aws-tf-lab`)
-- Create Classic Loadbalancer and attach it to an auto-scaling group with `aws_autoscaling_attachment`. Configure `aws_autoscaling_group`  to ignore changes to the `load_balancers` and `target_group_arns` arguments within a lifecycle configuration block. (lb_port=80, instance_port=80, protocol=http).
+- Create Classic Loadbalancer and attach it to an auto-scaling group with `aws_autoscaling_attachment`. Configure `aws_autoscaling_group`  to ignore changes to the `load_balancers` and `target_group_arns` arguments within a lifecycle configuration block. (lb_port=80, instance_port=80, protocol=http, `security_group_id={http-inbound-id}`).
 
 Store all resources from this task in `asg.tf` file.
 
