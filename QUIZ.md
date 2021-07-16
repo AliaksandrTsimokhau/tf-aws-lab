@@ -1,5 +1,6 @@
-### Quizzes
-======
+### __Quizzes__
+---
+
 **Chapter Quiz 01**: [**Understanding IaC**](https://app.linuxacademy.com/challenges/13aa3d1e-8d6e-4ce5-9602-eb1268d62640?redirect_uri=https:%2F%2Fapp.linuxacademy.com%2Fsearch%3Fquery%3Dterraform) (4 questions)
 
 **Chapter Quiz 02**: [**IaC with Terraform**](https://app.linuxacademy.com/challenges/70308f42-44fa-4df9-8bf6-3c2fc5aa7d1d?redirect_uri=https:%2F%2Fapp.linuxacademy.com%2Fsearch%3Fquery%3Dterraform) (8 questions)
