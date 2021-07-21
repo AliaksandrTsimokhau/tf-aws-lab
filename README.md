@@ -1,3 +1,24 @@
+  * [Problem to Be Solved](#problem-to-be-solved)
+  * [Explanation of the Solution](#explanation-of-the-solution)
+  * [PRE-REQUISITES](#pre-requisites)
+- [Creating Infrastructure](#creating-infrastructure)
+  * [TASK 1 - Creating VPC](#task-1---creating-vpc)
+  * [TASK 2 - Import Your SSH Key into AWS](#task-2---import-your-ssh-key-into-aws)
+  * [TASK 3 - Create S3 Bucket](#task-3---create-s3-bucket)
+  * [TASK 4 - Create IAM Resources](#task-4---create-iam-resources)
+  * [TASK 5 - Create Security Group](#task-5---create-security-group)
+  * [TASK 6 - Form TF Output](#task-6---form-tf-output)
+  * [TASK 7 - Configure remote data source](#task-7---configure-remote-data-source)
+  * [TASK 8 - Create EC2/ASG/ELB](#task-8---create-ec2-asg-elb)
+- [Working with state](#working-with-state)
+  * [TASK 9 - Move state to S3/Locking](#task-9---move-state-to-s3-locking)
+  * [TASK 10 - Move resources](#task-10---move-resources)
+  * [TASK 11 - Import resources](#task-11---import-resources)
+  * [TASK 12 - Use data discovery](#task-12---use-data-discovery)
+- [Advanced tasks](#advanced-tasks)
+  * [TASK 13 - Expose node output with nginx](#task-13---expose-node-output-with-nginx)
+  * [TASK 14 - Modules](#task-14---modules)
+
 ### Problem to Be Solved 
  This lab shows you how to use Terraform to create infrastructure in AWS including auto-scaling group, VPC, subnets, security groups and IAM role. Each instance will report its data to a specified S3 bucket on startup. This task is binding to real production needs – for instance developers could request instances with ability to writing debug information to S3 bucket.
 
