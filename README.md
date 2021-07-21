@@ -51,6 +51,7 @@ Please use **underscore** Terraform resources naming, e.g. `my_resource` instead
 
 4. Change current directory  to `~/tf_aws_lab/compute` and repeat the steps in [3].
 
+
 You are ready for lab!
 
 # Creating Infrastructure
@@ -187,7 +188,9 @@ Ensure that current directory is  `~/tf_aws_lab/base`
 Create following resources:
 
 -	Security group (`name=ssh-inbound`, `port=22`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`, `description="allows ssh access from safe IP-range"`).
--	Security group (`name=http-inbound`, `port=80`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`, `description="allows http access from safe IP-range"`).
+-	Security group (`name=lb-http-inbound`, `port=80`, `allowed_ip_range="your_IP or EPAM_office-IP_range"`, `description="allows http access from safe IP-range to a LoadBalancer"`).
+-	Security group (`name=http-inbound`, `port=80`, `source_security_group_id=id_of_lb-http-inbound_sg`, `description="allows http access from LoadBalancer"`). Hint: source_security_group_id is an attribute of[aws_security_group_rule resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group_rule). For details about how to configure securitygroups for loadbalancer see [documentation] (https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html)
+
 
 Store all resources from this task in `sg.tf` file.
 
@@ -260,7 +263,7 @@ Ensure that current directory is  `~/tf_aws_lab/compute`
 
 Create auto-scaling group resources:
 
-- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id={ssh-inbound-id}`,`key_name`,`iam_instance_profile`, `user_data script`, `min=1`, `max=3`)
+- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id={ssh-inbound-id,http-inbound-id}`,`key_name`,`iam_instance_profile`, `user_data script`, `min=1`, `max=3`)
 - Provide template with `delete_on_termination = true` network interface parameter - to automate clean-up of the resources
 - Author User Data bash script which should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
 
@@ -279,7 +282,7 @@ echo "This message was generated on instance ${INSTANCE_ID} with the following U
 ```
 
 - Create `aws_autoscaling_group` resource. (`name=epam-aws-tf-lab`,`max_size=min_size=1`,`launch_template=epam-aws-tf-lab`)
-- Create Classic Loadbalancer and attach it to an auto-scaling group with `aws_autoscaling_attachment`. Configure `aws_autoscaling_group`  to ignore changes to the `load_balancers` and `target_group_arns` arguments within a lifecycle configuration block. (lb_port=80, instance_port=80, protocol=http, `security_group_id={http-inbound-id}`).
+- Create Classic Loadbalancer and attach it to an auto-scaling group with `aws_autoscaling_attachment`. Configure `aws_autoscaling_group`  to ignore changes to the `load_balancers` and `target_group_arns` arguments within a lifecycle configuration block. (lb_port=80, instance_port=80, protocol=http, `security_group_id={lb-http-inbound-id}`).
 
 Store all resources from this task in `asg.tf` file.
 
