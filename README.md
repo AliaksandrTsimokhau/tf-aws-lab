@@ -46,11 +46,12 @@ After you’ve created configuration, we will work on its optimization like usin
 
 Run `terraform init` to initialize your configuration. 
 Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
-Run `terraform plan` to ensure that there are no changes
+Run `terraform plan` to ensure that there are no changes.
+
 Please use **underscore** Terraform resources naming, e.g. `my_resource` instead of `my-resource`.
 
 4. Change current directory  to `~/tf_aws_lab/compute` and repeat the steps in [3].
-
+5. Consider use Terraform [best practises](https://www.terraform-best-practices.com/naming)
 
 You are ready for lab!
 
