@@ -68,7 +68,7 @@ Create network stack for your infrastructure:
     - `name={StudentName}-{StudentSurname}-01-subnet-public-b`, `cidr=10.10.3.0/24`, `az=b`)
     - `name={StudentName}-{StudentSurname}-01-subnet-public-c`, `cidr=10.10.5.0/24`, `az=c`)
 -	**Internet gateway**: `{StudentName}-{StudentSurname}-01-igw`
--	**Routing table to bind IGW with Public subnet**: `name={StudentName}-{StudentSurname}-01-rt`
+-	**Routing table to bind IGW with Public subnets**: `name={StudentName}-{StudentSurname}-01-rt`
 
 Store all resources from this task in `vpc.tf` file.
 
