@@ -160,7 +160,7 @@ Create IAM resources:
 
 -	**IAM group** (`name=test-move`).
 -	**IAM policy** with write permission for "epam-aws-tf-lab" bucket only (`name=s3-write-epam-aws-tf-lab-${random_string.my_numbers.result}`). Hint: store your policy as yaml document side by side with configurations(or create 'files' subfolder for storing policy) and use templatefile() function to transfer IAM policy with imported S3 bucket name to a resource.
--	Create **IAM role**, attach the policy to it and create **IAM instance profile** for this IAM role.
+-	Create **IAM role**, attach the policy to it and create **IAM instance profile** for this IAM role. Allow to assume this role for ec2 service
 
 Store all resources from this task in `iam.tf` file.
 
@@ -254,7 +254,7 @@ Apply your changes when you're ready.
 
 ### Definition of DONE:
 
-- Save following artifacts under `/reports/task6/` folder:
+- Save following artifacts under `/reports/task7/` folder:
     - `terraform init` log (`tf_init.log`)
     - `terraform apply` log (`tf_apply.log`)
 
@@ -264,7 +264,7 @@ Ensure that current directory is  `~/tf_aws_lab/compute`
 
 Create auto-scaling group resources:
 
-- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id={ssh-inbound-id,http-inbound-id}`,`key_name`,`iam_instance_profile`, `user_data script`, `min=1`, `max=3`)
+- Create Launch Template resource. (`name=epam-aws-tf-lab`,`image_id="actual Amazon Linux AMI2 image id"`, `instance_type=t2.micro`,`security_group_id={ssh-inbound-id,http-inbound-id}`,`key_name`,`iam_instance_profile`, `user_data script`)
 - Provide template with `delete_on_termination = true` network interface parameter - to automate clean-up of the resources
 - Author User Data bash script which should get 2 parameters on instance start-up and send it to a S3 Bucket as a text file with instance_id as its name:
 
@@ -273,7 +273,7 @@ User Data Details:
 Getting EC2 Metadata
 ```
 EC2_MACHINE_UUID=$(cat /sys/devices/virtual/dmi/id/product_uuid |tr '[:upper:]' '[:lower:]')
-INSTANCE_ID=$(curl ...)
+INSTANCE_ID=$(replace this text with request instance id from metadata e.g. using curl)
 ```
 
 command to send text to S3 bucket (**use data rendenring to pass Bucket Name to this script**):
@@ -345,7 +345,7 @@ Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state fil
 - Update both configuration according to this move.
 - Run `terraform plan` on both configurations and observe the changes. Hint: there are should not be no changes detected (No resource creation or deletion in case of the correct resource move)
 
-Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
+Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style.
 
 ### Definition of DONE:
 
@@ -367,7 +367,7 @@ Hint: Keep in mind that there are 3 instances: AWS resource, Terraform state fil
 - Import `test-import` IAM group to the `compute` state.
 - Run `terraform plan` again to ensure that import was successful.
 
-Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
+Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style.
 If applicable all resources should be tagged with following tags {Terraform=true, Project=epam-tf-aws-lab}.
 If applicable all resources should be defined with the provider alias.
 
@@ -403,7 +403,7 @@ Refine your configuration :
 
 - Use data source to request the following resources: vpc_id, private subnet id, public subnet id, security group id, ssh key name, iam instance profile name, s3 bucket name.
 
-These data sources should replace remote state outputs therefore you can delete `data "terraform_remote_state" "base"` resource from current state and the `outputs.tf` file from the `base` configuration.
+Hint: These data sources should replace remote state outputs therefore you can delete `data "terraform_remote_state" "base"` resource from current state and the `outputs.tf` file from the `base` configuration. **Don't forget to replace references with a new data sources.**
 Hint: run `terraform refresh` command under `base` configuration to reflect changes.
 
 Store all resources from this task in `data.tf` file.
