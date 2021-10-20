@@ -222,7 +222,7 @@ Create outputs for your configuration:
 - Create `outputs.tf` file.
 - Following outputs required: `vpc_id`, `public subnet id`, `security group id`, `ssh key name`, iam instance profile name, s3 bucket name, 
 
-Store all resources from this task in `output.tf` file.
+Store all resources from this task in `outputs.tf` file.
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration valid and fits to a canonical format and style. Do this each time before apply your changes.
 Run `terraform plan` to see your changes.
