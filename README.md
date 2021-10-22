@@ -329,7 +329,6 @@ Refine your configurations:
 - Refine `compute` configuration by adding locking with DynamoDB.
 
 Do not forget to change path to a remote state for `compute` configuration.
-Store modules in `~/tf_aws_lab/modules/` subfolders.
 
 Run `terraform validate`  and `terraform fmt` to check if your modules valid and fits to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if it needed.
