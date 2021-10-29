@@ -220,7 +220,7 @@ Ensure that current directory is  `~/tf_aws_lab/base`
 Create outputs for your configuration:
 
 - Create `outputs.tf` file.
-- Following outputs required: `vpc_id`, `public subnet id`, `security group id`, `ssh key name`, iam instance profile name, s3 bucket name, 
+- Following outputs required: `vpc_id`, `public subnet id`, `security group id`, `iam instance profile name`.
 
 Store all resources from this task in `outputs.tf` file.
 
@@ -255,6 +255,7 @@ Apply your changes when you're ready.
 ### Definition of DONE:
 
 - Save following artifacts under `/reports/task7/` folder:
+    - `terraform.tfstate` file
     - `terraform init` log (`tf_init.log`)
     - `terraform apply` log (`tf_apply.log`)
 
@@ -400,7 +401,7 @@ Change current directory to   `~/tf_aws_lab/compute`
 
 Refine your configuration :
 
-- Use data source to request the following resources: vpc_id, public subnet id, security group id, ssh key name, iam instance profile name, s3 bucket name.
+- Use data source to request the following resources: `vpc_id`, `public subnet id`, `security group id`, `iam instance profile name`.
 
 Hint: These data sources should replace remote state outputs therefore you can delete `data "terraform_remote_state" "base"` resource from current state and the `outputs.tf` file from the `base` configuration. **Don't forget to replace references with a new data sources.**
 Hint: run `terraform refresh` command under `base` configuration to reflect changes.
